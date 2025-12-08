@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Navbar - Manlift Hyderabad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-green: #344F1F;
+      --accent-orange: #F4991A;
+      --soft-beige: #F2EAD3;
+      --soft-cream: #F9F5F0;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--soft-cream);
+    }
+
+    /* HEADER */
+    .site-header {
+      width: 100%;
+      background: var(--deep-green);
+      color: var(--white);
+      /* CHANGED: sticky -> fixed so it never scrolls away */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1200;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      min-height: 70px;
+      display: flex;
+      align-items: center;             /* vertical center */
+      justify-content: space-between;  /* logo left, menu/hamburger right */
+      gap: 1rem;
+    }
+
+    /* LOGO */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--soft-cream);
+    }
+
+    .nav-logo-placeholder {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-orange), var(--soft-beige));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--deep-green);
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .nav-logo-text span:first-child {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    /* NAV LINKS + CALL BTN */
+    .nav-main {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    /* normal links underline on hover */
+    .nav-links a:not(.nav-call-btn) {
+      text-decoration: none;
+      color: var(--soft-cream);
+      position: relative;
+      padding-bottom: 0.15rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:not(.nav-call-btn)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent-orange);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:not(.nav-call-btn):hover {
+      color: var(--accent-orange);
+    }
+
+    .nav-links a:not(.nav-call-btn):hover::after {
+      width: 100%;
+    }
+
+    /* CALL BUTTON – no icon */
+    .nav-call-btn {
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--accent-orange);
+      color: var(--black);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;           /* no underline */
+      transition: background-color 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-call-btn:hover {
+      background-color: #d37f08;       /* simple hover color change only */
+      color: var(--white);
+    }
+
+    /* HAMBURGER (MOBILE) */
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--soft-cream);
+      background: transparent;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .nav-toggle::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-orange);
+    }
+
+    .nav-toggle-lines,
+    .nav-toggle-lines::before,
+    .nav-toggle-lines::after {
+      content: "";
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--soft-cream);
+      position: absolute;
+      transition: transform 0.25s ease, opacity 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+    }
+
+    .nav-toggle-lines::before {
+      top: -6px;
+    }
+
+    .nav-toggle-lines::after {
+      bottom: -6px;
+    }
+
+    /* hamburger -> X when open */
+    .site-header.nav-open .nav-toggle-lines {
+      transform: rotate(45deg);
+    }
+
+    .site-header.nav-open .nav-toggle-lines::before {
+      top: 0;
+      transform: rotate(-90deg);
+    }
+
+    .site-header.nav-open .nav-toggle-lines::after {
+      bottom: 0;
+      opacity: 0;
+    }
+
+    /* MOBILE MENU */
+    @media (max-width: 900px) {
+      .nav-main {
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 70px;                        /* starts just below navbar */
+        background: linear-gradient(180deg, var(--deep-green), #243314);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem 1.25rem 1.8rem;
+        gap: 1rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        /* ✅ ensure dropdown is above page content */
+        z-index: 1300;
+      }
+
+      .site-header.nav-open .nav-links {
+        transform: translateY(0%);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a:not(.nav-call-btn) {
+        display: block;
+        width: 100%;
+        padding: 0.35rem 0;
+      }
+
+      .nav-call-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-logo-text span:first-child {
+        font-size: 0.85rem;
+      }
+      .nav-logo-text span:last-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <!-- LOGO PLACEHOLDER -->
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-placeholder">ML</div>
+        <div class="nav-logo-text">
+          <span>Manlift Hyderabad</span>
+          <span>Boom • Scissor • Man Lifts</span>
+        </div>
+      </a>
+
+      <!-- NAV LINKS + BUTTON -->
+      <div class="nav-main">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="boom-lift-rentals.html">Boom Lift Rentals</a></li>
+          <li><a href="scissor-lift-rentals.html">Scissor Lift Rentals</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="tel:+910000000000" class="nav-call-btn">
+              Click to Call Us
+            </a>
+          </li>
+        </ul>
+
+        <!-- MOBILE TOGGLE -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span class="nav-toggle-lines"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    (function () {
+      var header = document.getElementById('siteHeader');
+      var toggle = document.getElementById('navToggle');
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          header.classList.toggle('nav-open');
+        });
+      }
+
+      // close menu when a link is clicked (mobile)
+      var navLinks = document.querySelectorAll('.nav-links a');
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (header.classList.contains('nav-open')) {
+            header.classList.remove('nav-open');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

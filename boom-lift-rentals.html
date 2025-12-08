@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Boom Lift Rentals | Manlift Hyderabad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================
+       GLOBAL RESET & VARIABLES
+    ============================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --deep-green: #344F1F;
+      --accent-orange: #F4991A;
+      --soft-beige: #F2EAD3;
+      --soft-cream: #F9F5F0;
+      --white: #ffffff;
+      --black: #000000;
+      --muted: #5f5f5f;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--soft-cream);
+      color: var(--deep-green);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    main {
+      margin-top: 80px;
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 1.25rem;
+      }
+    }
+
+    /* ============================
+       SHARED BUTTON STYLES
+    ============================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: var(--accent-orange);
+      color: var(--black);
+      transition: background-color 0.22s ease, color 0.22s ease;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #d37f08;
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--accent-orange);
+      color: var(--deep-green);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent-orange);
+      color: var(--black);
+    }
+
+    .btn-soft {
+      background-color: var(--white);
+      color: var(--deep-green);
+      border: 1px solid #e1dacb;
+    }
+
+    .btn-soft:hover {
+      background-color: var(--accent-orange);
+      color: var(--black);
+    }
+
+    .btn-sm {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.8rem;
+    }
+
+    /* ============================
+       SCROLL REVEAL
+    ============================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-left {
+      transform: translateX(-50px);
+    }
+
+    .reveal-right {
+      transform: translateX(50px);
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+
+    /* ============================
+       SECTION HEADERS
+    ============================= */
+    .section-header {
+      text-align: left;
+      margin-bottom: 2.3rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-header.center .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================
+       SECTION 1: HERO (IMAGE)
+    ============================= */
+    .hero {
+      background: linear-gradient(180deg, var(--white) 0%, #dde6ea 56%, var(--soft-cream) 100%);
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #1aa9a1;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.1;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title span {
+      color: var(--accent-orange);
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-bullets {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-bullets span {
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+
+    .hero-bullets span::before {
+      content: "•";
+      color: var(--accent-orange);
+      margin-right: 0.25rem;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-photo-panel {
+      width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      background: #dde6ea;
+    }
+
+    .hero-photo-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-floating {
+      position: absolute;
+      left: 7%;
+      bottom: 10%;
+      background: rgba(52, 79, 31, 0.96);
+      color: var(--soft-cream);
+      border-radius: 16px;
+      padding: 0.9rem 1rem;
+      font-size: 0.8rem;
+      max-width: 76%;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-floating strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-media {
+        order: -1;
+      }
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-floating {
+        left: 6%;
+        right: 6%;
+        bottom: 7%;
+        max-width: none;
+      }
+    }
+
+    /* ============================
+       SECTION 2: TYPES OF BOOM LIFTS
+    ============================= */
+    .types {
+      background-color: var(--soft-cream);
+    }
+
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .type-card {
+      background-color: var(--white);
+      border-radius: 18px;
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e1dacb;
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .type-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .type-text {
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .type-meta {
+      font-size: 0.78rem;
+      color: var(--deep-green);
+    }
+
+    @media (max-width: 992px) {
+      .types-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .types-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SECTION 3: APPLICATIONS (IMAGE)
+    ============================= */
+    .applications {
+      background-color: var(--soft-beige);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+    }
+
+    .split-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.25);
+    }
+
+    .split-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .split-list {
+      list-style: none;
+      margin-top: 0.7rem;
+    }
+
+    .split-list li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .split-list li::before {
+      content: "•";
+      color: var(--accent-orange);
+      margin-right: 0.35rem;
+    }
+
+    @media (max-width: 900px) {
+      .split {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SECTION 4: PLANNING & HEIGHT
+       (IMAGE)
+    ============================= */
+    .planning {
+      background-color: var(--white);
+    }
+
+    .planning-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: 2.4rem;
+      align-items: center;
+    }
+
+    .planning-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.25);
+    }
+
+    .planning-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .planning-points {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .planning-points li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .planning-points li::before {
+      content: "›";
+      color: var(--accent-orange);
+      margin-right: 0.35rem;
+    }
+
+    @media (max-width: 900px) {
+      .planning-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SECTION 5: RENTAL PLANS
+    ============================= */
+    .plans {
+      background-color: var(--soft-cream);
+    }
+
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .plan-card {
+      background-color: var(--white);
+      border-radius: 18px;
+      padding: 1.4rem 1.2rem 1.3rem;
+      border: 1px solid #e1dacb;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      font-size: 0.86rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .plan-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .plan-meta {
+      font-size: 0.78rem;
+      color: var(--deep-green);
+    }
+
+    .plan-text {
+      color: var(--muted);
+      flex: 1;
+    }
+
+    @media (max-width: 992px) {
+      .plan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .plan-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SECTION 6: QUICK FAQ / CTA
+    ============================= */
+    .faq-cta {
+      background-color: var(--deep-green);
+      color: var(--soft-cream);
+    }
+
+    .faq-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .faq-inner h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-inner p {
+      font-size: 0.9rem;
+      color: #e6edd7;
+    }
+
+    .faq-list {
+      list-style: none;
+      margin-top: 0.9rem;
+    }
+
+    .faq-list li {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-list li::before {
+      content: "?";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      line-height: 18px;
+      text-align: center;
+      margin-right: 0.4rem;
+      background-color: rgba(249, 245, 240, 0.1);
+    }
+
+    .faq-cta-box {
+      background-color: rgba(249, 245, 240, 0.08);
+      border-radius: 18px;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid rgba(249, 245, 240, 0.3);
+      font-size: 0.86rem;
+    }
+
+    .faq-cta-box strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 900px) {
+      .faq-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       INLINE FORM SECTION
+    ============================= */
+    .enquiry-wrapper {
+      background-color: var(--white);
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 100%;
+    }
+
+    .enquiry-wrapper-inner {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 3.5rem 0 4rem;
+    }
+
+    /* ============================
+       MODAL POPUP FOR FORM
+    ============================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-inner {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 95vh;
+      overflow: auto;
+      border-radius: 22px;
+      background: transparent;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      z-index: 10;
+      border: none;
+      background: #111111;
+      color: var(--soft-cream);
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-wrapper {
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    #navbar-placeholder,
+    #footer-placeholder {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR FRAGMENT -->
+  <div id="navbar-placeholder"></div>
+
+  <main>
+
+    <!-- SECTION 1: HERO -->
+    <section class="hero reveal reveal-left">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-tagline">BOOM LIFT RENTALS</div>
+          <h1 class="hero-title">
+            <span>High-reach boom lifts</span> for safe work at height.
+          </h1>
+          <p class="hero-text">
+            Rent articulated and telescopic boom lifts with trained operators, safety checks and support. Ideal for
+            façades, pipe racks, outdoor utilities and hard-to-reach areas.
+          </p>
+
+          <div class="hero-bullets">
+            <span>Articulated & telescopic models</span>
+            <span>Diesel & electric boom lifts</span>
+            <span>Daily, weekly & monthly rentals</span>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.9rem;margin-bottom:1.4rem;">
+            <button class="btn js-open-form">
+              Click here to get a boom lift quote
+            </button>
+          </div>
+
+          <p style="font-size:0.82rem;color:var(--muted);">
+            Share working height, outreach and access path – we’ll suggest the right boom lift models and rental plan.
+          </p>
+        </div>
+
+        <aside class="hero-media reveal reveal-right">
+          <div class="hero-photo-panel">
+            <img src="https://images.pexels.com/photos/162583/crane-sky-machines-construction-162583.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Boom lift working on building">
+          </div>
+          <div class="hero-floating">
+            <strong>Safe reach for complex jobs.</strong>
+            Boom lifts reach over obstacles, along façades and into tight corners that conventional access cannot reach.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SECTION 2: TYPES OF BOOM LIFTS -->
+    <section class="types">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-tag">Boom lift range</p>
+          <h2 class="section-title">Boom lift types available for rental</h2>
+          <p class="section-sub">
+            Choose from multiple boom lift configurations based on working height, outreach, indoor or outdoor
+            use and ground conditions.
+          </p>
+        </header>
+
+        <div class="types-grid">
+          <article class="type-card reveal reveal-left">
+            <h3 class="type-title">Articulated boom lifts</h3>
+            <p class="type-text">
+              Ideal for navigating around obstacles and structures. The knuckle-style boom gives flexible up-and-over reach
+              for complex access points.
+            </p>
+            <p class="type-meta">Typical heights: 40 ft – 85 ft • Indoor & outdoor models</p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to enquire<br>articulated booms
+            </button>
+          </article>
+
+          <article class="type-card reveal">
+            <h3 class="type-title">Telescopic boom lifts</h3>
+            <p class="type-text">
+              Straight-boom machines for maximum horizontal outreach and high working heights on open sites such as
+              industrial plants and infrastructure.
+            </p>
+            <p class="type-meta">Typical heights: 60 ft – 135 ft • Strong horizontal reach</p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to enquire<br>telescopic booms
+            </button>
+          </article>
+
+          <article class="type-card reveal reveal-right">
+            <h3 class="type-title">Compact boom lifts</h3>
+            <p class="type-text">
+              Narrow-width and lightweight boom lifts that fit through tighter gates and aisles, giving safe access in
+              congested sites and confined work zones.
+            </p>
+            <p class="type-meta">Narrow aisles • Confined sites</p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to enquire<br>compact booms
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: APPLICATIONS (IMAGE) -->
+    <section class="applications">
+      <div class="container split">
+        <div class="reveal reveal-left">
+          <header class="section-header">
+            <p class="section-tag">Where boom lifts help</p>
+            <h2 class="section-title">Typical applications for boom lift rentals</h2>
+            <p class="section-sub">
+              Boom lifts are the preferred choice whenever you need reach over obstructions or access along vertical
+              surfaces without scaffolding.
+            </p>
+          </header>
+
+          <ul class="split-list">
+            <li>Façade works, glazing, cladding and painting on high-rise buildings.</li>
+            <li>Pipeline racks, structural steel and cable trays in industrial plants.</li>
+            <li>Signage, billboards and hoardings along highways and city streets.</li>
+            <li>Airport and stadium lighting, audio-visual and maintenance works.</li>
+            <li>Telecom towers, utility poles and outdoor infrastructure projects.</li>
+          </ul>
+
+          <div style="margin-top:1.4rem;">
+            <button class="btn js-open-form">
+              Click here to plan boom lifts for your job
+            </button>
+          </div>
+        </div>
+
+        <aside class="split-image reveal reveal-right">
+          <img src="https://images.pexels.com/photos/585418/pexels-photo-585418.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               alt="Boom lift used for façade work">
+        </aside>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PLANNING & HEIGHT (IMAGE) -->
+    <section class="planning">
+      <div class="container planning-inner">
+        <div class="planning-image reveal reveal-left">
+          <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               alt="Planning boom lift reach">
+        </div>
+
+        <div class="reveal reveal-right">
+          <header class="section-header">
+            <p class="section-tag">Height & reach planning</p>
+            <h2 class="section-title">We help you choose the right boom lift size</h2>
+            <p class="section-sub">
+              Send basic site information and we can guide you on suitable boom lift models, basket capacities and
+              ground conditions.
+            </p>
+          </header>
+
+          <ul class="planning-points">
+            <li>Share working height, horizontal reach and area to be covered.</li>
+            <li>Provide photos or sketches of the façade, pipe rack or structure.</li>
+            <li>Confirm floor type, allowable load and space for machine set-up.</li>
+            <li>Choose between rough-terrain diesel booms and electric booms.</li>
+            <li>Finalise rental duration, shift timings and operator requirement.</li>
+          </ul>
+
+          <div style="margin-top:1.2rem;">
+            <button class="btn btn-sm js-open-form">
+              Click here to send boom lift details
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: RENTAL PLANS & SUPPORT -->
+    <section class="plans">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-tag">Rental plans</p>
+          <h2 class="section-title">Flexible boom lift rental options</h2>
+          <p class="section-sub">
+            Match your boom lift rental plan to project timelines – from short shutdown jobs to long-term deployment on
+            construction and infrastructure sites.
+          </p>
+        </header>
+
+        <div class="plan-grid">
+          <article class="plan-card reveal reveal-left">
+            <h3 class="plan-title">Short-term & shutdown rentals</h3>
+            <p class="plan-meta">Daily / weekly rentals • Ideal for maintenance</p>
+            <p class="plan-text">
+              Boom lifts supplied for specific maintenance windows, shutdowns and inspection jobs with quick mobilisation
+              and demobilisation.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to book for shutdown
+            </button>
+          </article>
+
+          <article class="plan-card reveal">
+            <h3 class="plan-title">Project-based rentals</h3>
+            <p class="plan-meta">Monthly rentals • Construction & fit-outs</p>
+            <p class="plan-text">
+              Boom lifts assigned to specific buildings, zones or work fronts for the duration of your construction or
+              finishing activities.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to book for projects
+            </button>
+          </article>
+
+          <article class="plan-card reveal reveal-right">
+            <h3 class="plan-title">Long-term & site-based rentals</h3>
+            <p class="plan-meta">Multi-month rentals • Plants & infra</p>
+            <p class="plan-text">
+              Long-term boom lift deployment with planned preventive maintenance, standby support and dedicated
+              operators if required.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to discuss on rentals
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: QUICK FAQ / CTA -->
+    <section class="faq-cta">
+      <div class="faq-inner">
+        <div class="reveal reveal-left">
+          <h2>Have questions about boom lift rentals?</h2>
+          <p>
+            A quick discussion helps avoid under-sized or over-sized machines on site. Here are a few points we normally
+            clarify before confirming a boom lift.
+          </p>
+          <ul class="faq-list">
+            <li>What maximum working height and outreach do you need?</li>
+            <li>Are there obstacles such as canopies, pipes or parapets?</li>
+            <li>Is the work area indoor, outdoor or a mix of both?</li>
+            <li>What is the floor condition and gradient along the travel path?</li>
+            <li>Do you require an operator or will you use your own crew?</li>
+          </ul>
+        </div>
+
+        <aside class="faq-cta-box reveal reveal-right">
+          <strong>Click here to send your boom lift requirement.</strong>
+          Share basic details and our team will reply with model suggestions, availability and a clear rental quote.
+          <div style="margin-top:1.1rem;display:flex;flex-wrap:wrap;gap:0.7rem;">
+            <button class="btn btn-sm js-open-form">
+              Click here to get a boom lift quote
+            </button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INLINE FORM AT BOTTOM (FRAGMENT) -->
+    <section class="enquiry-wrapper">
+      <div class="enquiry-wrapper-inner reveal" id="form-inline-placeholder">
+        <!-- form.html fragment will load here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER FRAGMENT -->
+  <div id="footer-placeholder"></div>
+
+  <!-- POPUP FORM MODAL -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-inner">
+      <button class="modal-close" id="formModalClose" aria-label="Close form">&times;</button>
+      <div class="modal-content-wrapper" id="formModalContent">
+        <!-- form.html will be injected here on first open -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS: LOAD FRAGMENTS + POPUP + REVEAL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // NAVBAR
+      fetch("navbar.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+          initNavbar();   // hamburger
+        })
+        .catch(function (err) {
+          console.error("Error loading navbar.html", err);
+        });
+
+      // FOOTER
+      fetch("footer.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("footer-placeholder").innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error("Error loading footer.html", err);
+        });
+
+      // BOTTOM FORM (fragment)
+      fetch("form.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("form-inline-placeholder").innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error("Error loading form.html (inline)", err);
+        });
+
+      setupScrollReveal();
+      setupFormPopup();
+    });
+
+    // ENABLE HAMBURGER MENU AFTER NAVBAR LOADS
+    function initNavbar() {
+      const header = document.getElementById("siteHeader");
+      const toggle = document.getElementById("navToggle");
+
+      if (!header || !toggle) return;
+
+      toggle.addEventListener("click", function () {
+        header.classList.toggle("nav-open");
+      });
+
+      const navLinks = header.querySelectorAll(".nav-links a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          header.classList.remove("nav-open");
+        });
+      });
+    }
+
+    // POPUP FORM
+    function setupFormPopup() {
+      var modal = document.getElementById("formModal");
+      var modalClose = document.getElementById("formModalClose");
+      var modalContent = document.getElementById("formModalContent");
+      var formLoaded = false;
+
+      document.addEventListener("click", function (event) {
+        if (event.target.closest(".js-open-form")) {
+          event.preventDefault();
+          openModal();
+        }
+      });
+
+      function openModal() {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        if (!formLoaded) {
+          fetch("form.html")
+            .then(function (res) { return res.text(); })
+            .then(function (html) {
+              modalContent.innerHTML = html;
+              formLoaded = true;
+            })
+            .catch(function (err) {
+              console.error("Error loading form.html (modal)", err);
+              modalContent.innerHTML =
+                "<div style='background:#F9F5F0;padding:2rem;border-radius:1rem;color:#111;'>Unable to load enquiry form.</div>";
+            });
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      modalClose.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+    }
+
+    // SCROLL REVEAL
+    function setupScrollReveal() {
+      var elements = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach(function (el) { el.classList.add("reveal-visible"); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      elements.forEach(function (el) {
+        observer.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>

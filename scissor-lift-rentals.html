@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scissor Lift Rentals | Manlift Hyderabad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font: Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- ============================================
+       GLOBAL STYLES
+  ============================================= -->
+  <style>
+    /* --------------------------------------------
+       RESET + VARIABLES
+    -------------------------------------------- */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-green: #344F1F;
+      --accent-orange: #F4991A;
+      --soft-beige: #F2EAD3;
+      --soft-cream: #F9F5F0;
+      --white: #FFFFFF;
+      --black: #000000;
+      --muted: #5f5f5f;
+      --border-soft: #e1dacb;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--soft-cream);
+      color: var(--deep-green);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    main {
+      margin-top: 80px; /* space for sticky navbar fragment */
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 1.25rem;
+      }
+    }
+
+    /* --------------------------------------------
+       TYPOGRAPHY HELPERS
+    -------------------------------------------- */
+    .section-header {
+      margin-bottom: 2.4rem;
+      text-align: left;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .section-header.center .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* --------------------------------------------
+       BUTTONS
+    -------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      background-color: var(--accent-orange);
+      color: var(--black);
+      transition: background-color 0.22s ease, color 0.22s ease;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #d37f08;
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--accent-orange);
+      color: var(--deep-green);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent-orange);
+      color: var(--black);
+    }
+
+    .btn-soft {
+      background-color: var(--white);
+      color: var(--deep-green);
+      border: 1px solid var(--border-soft);
+    }
+
+    .btn-soft:hover {
+      background-color: var(--accent-orange);
+      color: var(--black);
+    }
+
+    .btn-sm {
+      padding: 0.55rem 1.4rem;
+      font-size: 0.8rem;
+    }
+
+    /* --------------------------------------------
+       GRID BASICS
+    -------------------------------------------- */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 992px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* --------------------------------------------
+       CARD STYLES
+    -------------------------------------------- */
+    .card {
+      background-color: var(--white);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.08);
+    }
+
+    .card--soft {
+      background-color: var(--soft-cream);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: var(--deep-green);
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background-color: var(--soft-beige);
+      color: var(--deep-green);
+    }
+
+    /* --------------------------------------------
+       SCROLL REVEAL
+    -------------------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-left {
+      transform: translateX(-50px);
+    }
+
+    .reveal-right {
+      transform: translateX(50px);
+    }
+
+    .reveal-visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+
+    /* ============================================
+       SECTION 1: HERO
+    ============================================= */
+    .hero {
+      background: linear-gradient(
+        180deg,
+        var(--white) 0%,
+        #dde6ea 60%,
+        var(--soft-cream) 100%
+      );
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #1aa9a1;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span {
+      color: var(--accent-orange);
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 35rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-highlights {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-highlights span {
+      display: inline-block;
+      margin-right: 0.9rem;
+    }
+
+    .hero-highlights span::before {
+      content: "•";
+      color: var(--accent-orange);
+      margin-right: 0.25rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 280px;
+    }
+
+    .hero-photo {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      width: 100%;
+      background-color: #d8dde0;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-floating {
+      position: absolute;
+      left: 7%;
+      bottom: 9%;
+      max-width: 78%;
+      background-color: rgba(52, 79, 31, 0.96);
+      color: var(--soft-cream);
+      border-radius: 16px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.8rem;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-floating strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2.05rem;
+      }
+
+      .hero-floating {
+        left: 6%;
+        right: 6%;
+        bottom: 7%;
+        max-width: none;
+      }
+    }
+
+    /* ============================================
+       SECTION 2: KEY BENEFITS (3 CARD ROW)
+    ============================================= */
+    .benefits {
+      background-color: var(--soft-cream);
+    }
+
+    .benefit-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.7rem;
+      font-size: 1.1rem;
+    }
+
+    /* ============================================
+       SECTION 3: DETAILED TYPES (with image)
+    ============================================= */
+    .types-section {
+      background-color: var(--soft-beige);
+    }
+
+    .types-list {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .types-list li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .types-list li::before {
+      content: "›";
+      color: var(--accent-orange);
+      margin-right: 0.35rem;
+    }
+
+    .image-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ============================================
+       SECTION 4: INDOOR vs OUTDOOR GRID
+    ============================================= */
+    .usage-section {
+      background-color: var(--white);
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 2.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .usage-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .usage-block {
+      background-color: var(--soft-cream);
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .usage-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .usage-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .usage-list {
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .usage-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .usage-list li::before {
+      content: "•";
+      color: var(--accent-orange);
+      margin-right: 0.35rem;
+    }
+
+    /* ============================================
+       SECTION 5: TECHNICAL SNAPSHOT (table-style)
+    ============================================= */
+    .specs {
+      background-color: var(--soft-cream);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .specs-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .specs-table {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      background-color: var(--white);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      border-collapse: collapse;
+    }
+
+    .specs-table thead {
+      background-color: var(--deep-green);
+      color: var(--soft-cream);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .specs-table th,
+    .specs-table td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid #e7e0d2;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .specs-table tbody tr:nth-child(2n) {
+      background-color: #faf7f2;
+    }
+
+    .specs-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.7rem;
+    }
+
+    /* ============================================
+       SECTION 6: SAFETY & SUPPORT (4 cards)
+    ============================================= */
+    .safety {
+      background-color: var(--white);
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1100px) {
+      .safety-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .safety-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .safety-card {
+      background-color: var(--soft-cream);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 1.3rem 1.2rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .safety-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--deep-green);
+      margin-bottom: 0.3rem;
+    }
+
+    .safety-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--deep-green);
+    }
+
+    /* ============================================
+       SECTION 7: RENTAL PROCESS STRIP
+    ============================================= */
+    .process {
+      background-color: var(--soft-beige);
+    }
+
+    .process-flex {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .process-flex {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .process-steps {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .process-step {
+      background-color: var(--soft-cream);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .process-step-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--deep-green);
+      margin-bottom: 0.25rem;
+    }
+
+    .process-step-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--deep-green);
+    }
+
+    .process-side {
+      background-color: var(--white);
+      border-radius: 20px;
+      padding: 1.4rem 1.3rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .process-side-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--deep-green);
+    }
+
+    /* ============================================
+       SECTION 8: FAQ + CTA BAND
+    ============================================= */
+    .faq-band {
+      background-color: var(--deep-green);
+      color: var(--soft-cream);
+    }
+
+    .faq-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .faq-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .faq-title {
+      font-size: 1.7rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-sub {
+      font-size: 0.9rem;
+      color: #dde7d3;
+      margin-bottom: 1.3rem;
+    }
+
+    .faq-list {
+      list-style: none;
+      font-size: 0.86rem;
+    }
+
+    .faq-list li {
+      margin-bottom: 0.55rem;
+    }
+
+    .faq-list li::before {
+      content: "?";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(249, 245, 240, 0.5);
+      margin-right: 0.45rem;
+      font-size: 0.72rem;
+    }
+
+    .faq-cta-box {
+      background-color: rgba(249, 245, 240, 0.08);
+      border-radius: 18px;
+      border: 1px solid rgba(249, 245, 240, 0.28);
+      padding: 1.4rem 1.3rem;
+      font-size: 0.86rem;
+      color: #e9efe0;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .faq-cta-box strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .faq-contact-line {
+      font-size: 0.84rem;
+      margin-top: 0.6rem;
+    }
+
+    .faq-contact-line a {
+      color: var(--accent-orange);
+      text-decoration: none;
+    }
+
+    .faq-contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    /* ============================================
+       SECTION 9: INLINE FORM WRAPPER
+    ============================================= */
+    .enquiry-wrapper {
+      background-color: var(--white);
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 100%;
+    }
+
+    .enquiry-wrapper-inner {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 3.5rem 0 4rem;
+    }
+
+    /* ============================================
+       MODAL POPUP FOR FORM
+    ============================================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-inner {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 95vh;
+      overflow: auto;
+      border-radius: 22px;
+      background: transparent;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      z-index: 10;
+      border: none;
+      background: #111111;
+      color: var(--soft-cream);
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-wrapper {
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    #navbar-placeholder,
+    #footer-placeholder {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR FRAGMENT
+  ============================================= -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ============================================
+       MAIN CONTENT
+  ============================================= -->
+  <main>
+
+    <!-- ============================================
+         SECTION 1: HERO
+    ============================================= -->
+    <section class="hero reveal">
+      <div class="container hero-layout">
+
+        <div>
+          <div class="hero-kicker">
+            SCISSOR LIFT RENTALS
+          </div>
+
+          <h1 class="hero-title">
+            Stable <span>scissor lifts</span> for safe and efficient work at height.
+          </h1>
+
+          <p class="hero-text">
+            Rent electric and diesel scissor lifts for warehouses, factories, malls, airports and
+            construction projects. We support you with planning, delivery, operators and quick service.
+          </p>
+
+          <div class="hero-highlights">
+            <span>Platform heights from ~6m to ~16m</span>
+            <span>Indoor electric & outdoor rough-terrain lifts</span>
+            <span>Short-term, project-based and long-term rentals</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn js-open-form">
+              Click here to get a scissor lift quote
+            </button>
+          </div>
+
+          <p class="hero-note">
+            Share basic information on working height, platform load and floor conditions. Our team
+            will calculate the right scissor lift options and send you a clear rental proposal.
+          </p>
+        </div>
+
+        <aside class="hero-media">
+          <div class="hero-photo">
+            <img
+              src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="Scissor lift inside industrial facility"
+            >
+          </div>
+
+          <div class="hero-floating">
+            <strong>Flat, stable platforms for straight-up access.</strong>
+            Scissor lifts are ideal when you need vertical reach with room for people, tools and
+            materials on the platform – without installing scaffolding.
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: KEY BENEFITS (3 CARDS)
+    ============================================= -->
+    <section class="benefits">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-tag">Why choose scissor lifts?</p>
+          <h2 class="section-title">Benefits of scissor lift rentals for your projects</h2>
+          <p class="section-sub">
+            Scissor lifts provide a safe, stable and cost-effective alternative to scaffolding for many
+            indoor and outdoor applications. Here are some of the reasons clients prefer them.
+          </p>
+        </header>
+
+        <div class="grid-3">
+
+          <article class="card reveal reveal-left">
+            <div class="benefit-icon">↑</div>
+            <h3 class="card-title">Straight-up vertical access</h3>
+            <p class="card-text">
+              Scissor lifts move directly up and down, making them perfect for tasks where work is done straight
+              overhead – such as lighting, HVAC, sprinkler lines, cable trays, racks and ceilings.
+            </p>
+            <p class="card-meta">
+              Typical use: warehouses, atriums, production floors, retail fit-outs.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to rent for<br>warehouse works
+            </button>
+          </article>
+
+          <article class="card reveal">
+            <div class="benefit-icon">⚙</div>
+            <h3 class="card-title">Large platform & load capacity</h3>
+            <p class="card-text">
+              Wide platforms allow two or more people to work together with tools, ducting, cable drums, false
+              ceiling materials and lighting fixtures – reducing the number of trips up and down.
+            </p>
+            <p class="card-meta">
+              Platform capacity options to suit your material handling needs.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to rent for<br>installation jobs
+            </button>
+          </article>
+
+          <article class="card reveal reveal-right">
+            <div class="benefit-icon">✔</div>
+            <h3 class="card-title">Safe, quick & cost-efficient</h3>
+            <p class="card-text">
+              Lifts can be driven between work areas, set up in minutes and repositioned easily, helping you cut
+              down on labour and time compared to conventional scaffolding.
+            </p>
+            <p class="card-meta">
+              Ideal for repetitive maintenance points spread across a facility.
+            </p>
+            <button class="btn btn-sm btn-soft js-open-form">
+              Click here to compare<br>with scaffolding
+            </button>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: SCISSOR LIFT TYPES (WITH IMAGE)
+    ============================================= -->
+    <section class="types-section">
+      <div class="container grid-2">
+
+        <div class="reveal reveal-left">
+          <header class="section-header">
+            <p class="section-tag">Scissor lift range</p>
+            <h2 class="section-title">Types of scissor lifts available for rental</h2>
+            <p class="section-sub">
+              Select from electric, diesel and rough-terrain scissor lifts depending on height, load capacity,
+              indoor/outdoor use and floor conditions.
+            </p>
+          </header>
+
+          <ul class="types-list">
+            <li>
+              <strong>Electric slab scissor lifts</strong> – compact footprint, non-marking tyres and zero
+              emissions for indoor warehouses, showrooms, malls and airports.
+            </li>
+            <li>
+              <strong>Diesel rough-terrain scissor lifts</strong> – four-wheel drive, outriggers on some
+              models and high ground clearance for outdoor and semi-finished sites.
+            </li>
+            <li>
+              <strong>Narrow-aisle scissor lifts</strong> – designed to navigate between pallet racks and
+              shelving systems where aisle width is limited.
+            </li>
+            <li>
+              <strong>High-capacity scissor lifts</strong> – larger platforms with higher SWL (safe working load)
+              to carry multiple technicians, components and tools at once.
+            </li>
+            <li>
+              <strong>Low-level access lifts</strong> – push-around and micro scissor lifts for safe access
+              up to moderate heights in sensitive environments.
+            </li>
+          </ul>
+
+          <div style="margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:0.8rem;">
+            <button class="btn btn-sm js-open-form">
+              Click here to get size recommendations
+            </button>
+          </div>
+        </div>
+
+        <aside class="image-frame reveal reveal-right">
+          <img
+            src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=1200"
+            alt="Different scissor lift types"
+          >
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: INDOOR vs OUTDOOR USAGE
+    ============================================= -->
+    <section class="usage-section">
+      <div class="container">
+
+        <header class="section-header center">
+          <p class="section-tag">Usage scenarios</p>
+          <h2 class="section-title">Indoor and outdoor scissor lift applications</h2>
+          <p class="section-sub">
+            We supply scissor lifts for a wide range of industries – from logistics warehouses and data
+            centres to airports, commercial complexes and infrastructure projects.
+          </p>
+        </header>
+
+        <div class="usage-grid">
+
+          <!-- Indoor block -->
+          <article class="usage-block reveal reveal-left">
+            <div class="pill">Indoor & semi-indoor</div>
+            <h3 class="usage-title">Electric scissor lifts for finished spaces</h3>
+            <p class="usage-sub">
+              Quiet, battery-operated scissor lifts with non-marking tyres provide safe access in finished
+              environments where emissions and noise must be controlled.
+            </p>
+            <ul class="usage-list">
+              <li>Warehouses and distribution centres for racking, lights and sprinklers.</li>
+              <li>Malls and showrooms for façade cladding, décor and signage.</li>
+              <li>Airport terminals and metro stations for ceiling and MEP works.</li>
+              <li>Data centres and clean manufacturing facilities with sensitive flooring.</li>
+              <li>Auditoriums, halls and educational campuses for lighting and AV works.</li>
+            </ul>
+            <p class="muted" style="font-size:0.84rem;">
+              Click below, share your indoor job details and we will suggest suitable electric scissor lift models.
+            </p>
+            <button class="btn btn-sm js-open-form" style="margin-top:0.8rem;">
+              Click here to enquire indoor scissor lifts
+            </button>
+          </article>
+
+          <!-- Outdoor block -->
+          <article class="usage-block reveal reveal-right">
+            <div class="pill">Outdoor & construction</div>
+            <h3 class="usage-title">Diesel & rough-terrain scissor lifts for projects</h3>
+            <p class="usage-sub">
+              When you work on semi-finished or uneven ground, rough-terrain scissor lifts provide the
+              additional traction and stability you need.
+            </p>
+            <ul class="usage-list">
+              <li>Construction sites for façade, shuttering, formwork and finishing tasks.</li>
+              <li>Industrial plants for equipment installation, cable trays and piping.</li>
+              <li>Stadiums and outdoor venues for seating, roofing and lighting installations.</li>
+              <li>Power plants, refineries and infrastructure projects requiring high platforms.</li>
+              <li>Large yards and depots where high-capacity platforms are essential.</li>
+            </ul>
+            <p class="muted" style="font-size:0.84rem;">
+              Our team checks access paths, gradients and ground bearing capacity before recommending rough-terrain lifts.
+            </p>
+            <button class="btn btn-sm js-open-form" style="margin-top:0.8rem;">
+              Click here to enquire outdoor scissor lifts
+            </button>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: TECHNICAL SNAPSHOT
+    ============================================= -->
+    <section class="specs">
+      <div class="container specs-grid">
+
+        <div class="reveal reveal-left">
+          <header class="section-header">
+            <p class="section-tag">Technical snapshot</p>
+            <h2 class="section-title">Typical scissor lift specifications we offer</h2>
+            <p class="section-sub">
+              Exact specifications vary by brand and model, but the ranges below show how our scissor lifts
+              typically align with different project requirements.
+            </p>
+          </header>
+
+          <p class="muted" style="font-size:0.86rem;margin-bottom:0.7rem;">
+            If you are unsure which height or capacity to pick, simply share these three points:
+          </p>
+          <ol style="font-size:0.86rem;color:var(--muted);padding-left:1.1rem;margin-bottom:0.9rem;">
+            <li>Maximum height from floor level to the highest work point.</li>
+            <li>Approximate number of persons and average weight of materials on the platform.</li>
+            <li>Floor type and condition along the route and at the work location.</li>
+          </ol>
+          <p class="muted" style="font-size:0.86rem;">
+            Based on this, we will shortlist scissor lift models and share clear specifications
+            along with the rental quote.
+          </p>
+
+          <button class="btn btn-sm js-open-form" style="margin-top:1.1rem;">
+            Click here to send your basic details
+          </button>
+        </div>
+
+        <div class="reveal reveal-right">
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Working height*</th>
+                <th>Platform capacity*</th>
+                <th>Typical use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rough-terrain</td>
+                <td>~10–16 m</td>
+                <td>450–680 kg</td>
+                <td>Outdoor construction, industrial plants, yards and depots.</td>
+              </tr>
+              <tr>
+                <td>High-capacity</td>
+                <td>Model-specific</td>
+                <td>&gt; 700 kg</td>
+                <td>Heavy installations, large assemblies and tool-intensive works.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="specs-note">
+            *Figures are indicative only. Exact specifications depend on brand and model. We will share
+            confirmed details when we send your scissor lift quotation.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: SAFETY & SUPPORT
+    ============================================= -->
+    <section class="safety">
+      <div class="container">
+
+        <header class="section-header center">
+          <p class="section-tag">Safety & support</p>
+          <h2 class="section-title">How we support safe scissor lift operations</h2>
+          <p class="section-sub">
+            Safety is at the centre of every scissor lift rental. From pre-dispatch inspection to operator
+            briefing and maintenance, our team focuses on reducing risk on site.
+          </p>
+        </header>
+
+        <div class="safety-grid">
+
+          <article class="safety-card reveal reveal-left">
+            <p class="safety-label">Before dispatch</p>
+            <h3 class="safety-title">Pre-rental inspection & documentation</h3>
+            <p>
+              Each scissor lift undergoes a pre-rental check covering controls, hydraulics, brakes,
+              emergency lowering and guard rails. We can share inspection checklists and load test documents
+              where applicable.
+            </p>
+          </article>
+
+          <article class="safety-card reveal">
+            <p class="safety-label">On arrival</p>
+            <h3 class="safety-title">Site handover & familiarisation</h3>
+            <p>
+              Our team or operator walks through emergency controls, safe working load, platform gates,
+              pothole protection, alarms and battery/engine checks with your supervisors before handover.
+            </p>
+          </article>
+
+          <article class="safety-card reveal">
+            <p class="safety-label">During use</p>
+            <h3 class="safety-title">Breakdown support & preventive care</h3>
+            <p>
+              We schedule preventive maintenance on long-term jobs and provide quick response for breakdown
+              calls so that downtime is minimised and your teams can plan work confidently.
+            </p>
+          </article>
+
+          <article class="safety-card reveal reveal-right">
+            <p class="safety-label">Training</p>
+            <h3 class="safety-title">Operator & user guidance</h3>
+            <p>
+              Where required, we can provide trained operators or guidance for your own trained personnel on
+              daily checks, safe operating zones, harness points and safe loading practices.
+            </p>
+          </article>
+
+        </div>
+
+        <div style="margin-top:2.1rem;text-align:center;">
+          <button class="btn btn-sm js-open-form">
+            Click here to request safety & rental details
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 7: RENTAL PROCESS STRIP
+    ============================================= -->
+    <section class="process">
+      <div class="container process-flex">
+
+        <div class="reveal reveal-left">
+          <header class="section-header">
+            <p class="section-tag">How it works</p>
+            <h2 class="section-title">Simple scissor lift rental process</h2>
+            <p class="section-sub">
+              Whether you need a lift for a two-day shutdown or a six-month project, our process keeps
+              things straightforward and transparent.
+            </p>
+          </header>
+
+          <div class="process-steps">
+
+            <div class="process-step">
+              <p class="process-step-label">Step 01</p>
+              <h3 class="process-step-title">Click here and send us your requirement</h3>
+              <p>
+                Use any “Click here to...” button on this page to share basic details – location, approximate
+                working height, expected start date and duration.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <p class="process-step-label">Step 02</p>
+              <h3 class="process-step-title">Receive recommended scissor lift options & quote</h3>
+              <p>
+                Our team reviews the information, recommends suitable scissor lift models and sends a
+                clear rental quote that includes mobilisation, demobilisation and operator options.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <p class="process-step-label">Step 03</p>
+              <h3 class="process-step-title">Confirm schedule and mobilise the lifts</h3>
+              <p>
+                Once you confirm, we align delivery, access permissions and safety checks so that the
+                scissor lifts reach your site ready to work at the agreed time.
+              </p>
+            </div>
+
+            <div class="process-step">
+              <p class="process-step-label">Step 04</p>
+              <h3 class="process-step-title">Support throughout your rental period</h3>
+              <p>
+                Our service and operations team track running hours, schedule maintenance, handle breakdown
+                calls and coordinate extensions or off-hire as your project needs change.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <aside class="process-side reveal reveal-right">
+          <h3 class="process-side-title">
+            Need help choosing between scissor lifts and other access equipment?
+          </h3>
+          <p>
+            On some projects, scissor lifts alone may be enough. On others, combining scissor lifts with boom lifts,
+            man lifts or cherry pickers provides better flexibility.
+          </p>
+          <p>
+            If you share a short description of your scope, we can suggest:
+          </p>
+          <ul style="font-size:0.86rem;color:var(--muted);margin-top:0.5rem;padding-left:1.1rem;">
+            <li>Which access equipment suits each work front.</li>
+            <li>How many machines you may need at a time.</li>
+            <li>What rental period will usually be efficient.</li>
+            <li>Any special safety or floor protection arrangements.</li>
+          </ul>
+          <p style="margin-top:0.9rem;">
+            The goal is to keep your teams productive at height while controlling overall rental spend.
+          </p>
+          <button class="btn btn-sm js-open-form" style="margin-top:1rem;">
+            Click here to talk through your plan
+          </button>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 8: FAQ + CTA BAND
+    ============================================= -->
+    <section class="faq-band">
+      <div class="faq-layout">
+
+        <div class="reveal reveal-left">
+          <h2 class="faq-title">Frequently asked questions about scissor lift rentals</h2>
+          <p class="faq-sub">
+            Here are some of the common questions we hear from clients who are renting scissor lifts
+            for the first time or expanding their access fleet.
+          </p>
+
+          <ul class="faq-list">
+            <li>
+              What information do you need to recommend a scissor lift model for my site?
+            </li>
+            <li>
+              Can I use the same electric scissor lift both indoors and outdoors on the same project?
+            </li>
+            <li>
+              What is the difference between platform height and working height in your quotations?
+            </li>
+            <li>
+              How many people can stand on a scissor lift platform at one time?
+            </li>
+            <li>
+              Do I need to provide operators, or can you supply trained operators with the lifts?
+            </li>
+            <li>
+              How do you handle breakdowns or battery issues during the rental period?
+            </li>
+            <li>
+              Can I extend the rental if my work takes longer than expected?
+            </li>
+          </ul>
+
+          <p class="faq-sub" style="margin-top:1.2rem;">
+            If your question is not listed here, simply send it along with your enquiry – we are happy
+            to clarify details before you finalise your rental plan.
+          </p>
+        </div>
+
+        <aside class="faq-cta-box reveal reveal-right">
+          <strong>Click here to send your scissor lift enquiry now.</strong>
+          Share a few quick points about your site, working height and duration. We will respond with
+          suitable scissor lift options, availability and transparent rental pricing.
+          <div style="margin-top:1.1rem;display:flex;flex-wrap:wrap;gap:0.9rem;">
+            <button class="btn btn-sm js-open-form">
+              Click here to get a scissor lift quote
+            </button>
+          </div>
+
+          <p class="faq-contact-line">
+            Call:
+            <a href="tel:+919999999999">+91 99999 99999</a>
+          </p>
+          <p class="faq-contact-line">
+            Email:
+            <a href="mailto:info@boomliftrentalsindia.com">info@boomliftrentalsindia.com</a>
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 9: INLINE FORM (BOTTOM, FRAGMENT)
+    ============================================= -->
+    <section class="enquiry-wrapper">
+      <div class="enquiry-wrapper-inner reveal" id="form-inline-placeholder">
+        <!-- form.html fragment will load here -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER FRAGMENT
+  ============================================= -->
+  <div id="footer-placeholder"></div>
+
+  <!-- ============================================
+       POPUP FORM MODAL
+  ============================================= -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-inner">
+      <button class="modal-close" id="formModalClose" aria-label="Close form">&times;</button>
+      <div class="modal-content-wrapper" id="formModalContent">
+        <!-- form.html will be loaded on first open -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCRIPTS: LOAD FRAGMENTS + POPUP + REVEAL
+  ============================================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      /* Load navbar fragment */
+      fetch("navbar.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("navbar-placeholder").innerHTML = html;
+          initNavbar();
+        })
+        .catch(function (err) {
+          console.error("Error loading navbar.html", err);
+        });
+
+      function initNavbar() {
+        const header = document.getElementById("siteHeader");
+        const toggle = document.getElementById("navToggle");
+        const callBtn = document.querySelector(".nav-call");
+
+        if (!header || !toggle) return;
+
+        toggle.addEventListener("click", function () {
+          header.classList.toggle("nav-open");
+        });
+
+        const navLinks = header.querySelectorAll(".nav-links a");
+        navLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            header.classList.remove("nav-open");
+          });
+        });
+
+        function handleMobileView() {
+          if (window.innerWidth < 768) {
+            if (callBtn) callBtn.style.display = "none";
+          } else {
+            if (callBtn) callBtn.style.display = "inline-flex";
+          }
+        }
+
+        handleMobileView();
+        window.addEventListener("resize", handleMobileView);
+      }
+
+      /* Load footer fragment */
+      fetch("footer.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("footer-placeholder").innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error("Error loading footer.html", err);
+        });
+
+      /* Load form at bottom as fragment */
+      fetch("form.html")
+        .then(function (res) { return res.text(); })
+        .then(function (html) {
+          document.getElementById("form-inline-placeholder").innerHTML = html;
+        })
+        .catch(function (err) {
+          console.error("Error loading form.html (inline)", err);
+        });
+
+      setupScrollReveal();
+      setupFormPopup();
+    });
+
+    /* --------------------------------------------
+       POPUP FORM HANDLING
+    -------------------------------------------- */
+    function setupFormPopup() {
+      var modal = document.getElementById("formModal");
+      var modalClose = document.getElementById("formModalClose");
+      var modalContent = document.getElementById("formModalContent");
+      var formLoaded = false;
+
+      document.addEventListener("click", function (event) {
+        if (event.target.closest(".js-open-form")) {
+          event.preventDefault();
+          openModal();
+        }
+      });
+
+      function openModal() {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+
+        if (!formLoaded) {
+          fetch("form.html")
+            .then(function (res) { return res.text(); })
+            .then(function (html) {
+              modalContent.innerHTML = html;
+              formLoaded = true;
+            })
+            .catch(function (err) {
+              console.error("Error loading form.html (modal)", err);
+              modalContent.innerHTML =
+                "<div style='background:#F9F5F0;padding:2rem;border-radius:1rem;color:#111;'>Unable to load enquiry form.</div>";
+            });
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      modalClose.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+    }
+
+    /* --------------------------------------------
+       SCROLL REVEAL SETUP
+    -------------------------------------------- */
+    function setupScrollReveal() {
+      var elements = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach(function (el) { el.classList.add("reveal-visible"); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      elements.forEach(function (el) {
+        observer.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>

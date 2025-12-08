@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enquiry Form - Manlift Rentals India</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    :root{
+      --deep-green:#344F1F;
+      --accent-orange:#F4991A;
+      --soft-beige:#F2EAD3;
+      --soft-cream:#F9F5F0;
+      --white:#ffffff;
+      --black:#000000;
+    }
+
+    body{
+      font-family:"Poppins",system-ui,sans-serif;
+      background:var(--soft-cream);
+      color:var(--deep-green);
+    }
+
+    .form-section{
+      width:100%;
+      padding:3.5rem 1.5rem;
+      /* background:linear-gradient(135deg,var(--soft-cream),var(--soft-beige)); */
+      display:flex;justify-content:center;
+    }
+
+    .form-wrapper{
+      width:100%;max-width:1100px;
+      display:grid;grid-template-columns:1.1fr 1.1fr;
+      gap:2.5rem;background:var(--white);
+      border-radius:20px;overflow:hidden;
+      box-shadow:0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    /* LEFT PANEL */
+    .form-info{
+      padding:2.5rem 2.8rem;
+      background:radial-gradient(circle at top left,var(--accent-orange) 0,var(--deep-green) 48%,#1e2b13 100%);
+      color:var(--soft-cream);
+    }
+
+    .form-info h2{font-size:1.6rem;margin-bottom:1rem;line-height:1.3;}
+    .form-info span.highlight{color:var(--accent-orange);}
+    .description{font-size:0.9rem;line-height:1.6;margin-bottom:1.6rem;}
+
+    .chip-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
+    .chip{
+      font-size:0.72rem;text-transform:uppercase;
+      letter-spacing:0.13em;padding:0.35rem 0.75rem;
+      border-radius:999px;border:1px solid rgba(249,245,240,0.35);
+      background:rgba(249,245,240,0.08);
+    }
+
+    .contact-block{font-size:0.85rem;line-height:1.7;}
+    .contact-label{
+      font-size:0.72rem;text-transform:uppercase;
+      opacity:0.7;margin-top:0.8rem;
+    }
+
+    /* clickable links */
+    .contact-block a{
+      color:var(--soft-cream);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .contact-block a:hover{
+      color:var(--accent-orange);
+    }
+
+    /* RIGHT PANEL */
+    .form-panel{padding:2.5rem 2.8rem;}
+    .form-heading{font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;opacity:0.8;}
+    h3{font-size:1.35rem;margin:0.3rem 0 0.8rem;}
+    .sub{font-size:0.85rem;margin-bottom:1.6rem;}
+
+    form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.1rem 1.4rem;
+    }
+
+    .form-group{display:flex;flex-direction:column;gap:0.25rem;}
+    .full-width{grid-column:1/-1;}
+
+    label{font-size:0.78rem;font-weight:500;}
+    label .required{color:#c0392b;}
+
+    input,select,textarea{
+      font-family:inherit;font-size:0.85rem;
+      padding:0.6rem 0.75rem;border-radius:10px;
+      border:1px solid #dad1c2;background:#fbf8f3;
+      transition:0.2s;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--accent-orange);
+      box-shadow:0 0 0 2px rgba(244,153,26,0.24);
+      background:var(--white);
+    }
+
+    textarea{resize:vertical;min-height:96px;}
+
+    .submit-row{
+      grid-column:1/-1;margin-top:0.6rem;
+      display:flex;flex-wrap:wrap;gap:0.8rem;
+    }
+
+    .btn-submit{
+      padding:0.8rem 1.8rem;border-radius:999px;
+      background:var(--accent-orange);
+      border:none;cursor:pointer;
+      font-size:0.87rem;font-weight:600;
+      letter-spacing:0.1em;text-transform:uppercase;
+      transition:0.2s;
+    }
+    .btn-submit:hover{background:#d37f08;color:var(--white);}
+
+    @media(max-width:900px){
+      .form-wrapper{grid-template-columns:1fr;}
+      .form-info{display:none;}
+      form{grid-template-columns:1fr;}
+      .form-panel{padding:2.2rem 1.6rem;}
+    }
+  </style>
+</head>
+<body>
+
+<section class="form-section">
+  <div class="form-wrapper">
+
+    <!-- LEFT PANEL (hidden on mobile) -->
+    <div class="form-info">
+      <h2>
+        Lift Rentals Available <br>
+        <span class="highlight">Across India</span>
+      </h2>
+      <p class="description">
+        Boom lifts, scissor lifts, and man lifts for projects all over India.
+        Share your requirement and we’ll respond with a tailored quote.
+      </p>
+
+      <div class="chip-row">
+        <span class="chip">Fast response</span>
+        <span class="chip">Best rental rates</span>
+        <span class="chip">Professional support</span>
+      </div>
+
+      <div class="contact-block">
+        <div class="contact-label">Call</div>
+        <a href="tel:+919999999999">+91 99999 99999</a>
+
+        <div class="contact-label">Email</div>
+        <a href="mailto:info@boomliftrentalsindia.com">info@boomliftrentalsindia.com</a>
+
+        <div class="contact-label">Working Hours</div>
+        <strong>Mon – Sat, 9:00 AM to 7:00 PM</strong>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM PANEL -->
+    <div class="form-panel">
+      <div class="form-heading">Enquiry form for boom / scissor / man lifts</div>
+      <h3>Tell us what you need</h3>
+      <p class="sub">Fill in the details below and our team will contact you with a quote.</p>
+
+      <form action="form-handler.php" method="post">
+        <!-- REQUIRED -->
+        <div class="form-group">
+          <label>Full Name <span class="required">*</span></label>
+          <input type="text" name="full_name" required>
+        </div>
+
+        <div class="form-group">
+          <label>Contact Number <span class="required">*</span></label>
+          <input type="tel" name="phone" required>
+        </div>
+
+        <!-- OPTIONAL -->
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email">
+        </div>
+
+        <div class="form-group">
+          <label>Area / Location</label>
+          <input type="text" name="location">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Select Equipment</label>
+          <select name="equipment">
+            <option value="">-- Select equipment --</option>
+            <option value="Boom Lift">Boom Lift</option>
+            <option value="Scissor Lift">Scissor Lift</option>
+            <option value="Man Lift">Man Lift</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Request to get quote</label>
+          <textarea name="message" placeholder="Share site details, lift height, rental duration, etc."></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-submit">
+            Click here to get your quote
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

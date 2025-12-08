@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manlift Hyderabad | Boom, Scissor, Man Lifts & Cherry Pickers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================
+       GLOBAL RESET & VARIABLES
+    ============================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --deep-green: #344F1F;
+      --accent-orange: #F4991A;
+      --soft-beige: #F2EAD3;
+      --soft-cream: #F9F5F0;
+      --white: #ffffff;
+      --black: #000000;
+      --muted: #5e5e5e;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--soft-cream);
+      color: var(--deep-green);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    main {
+      margin-top: 80px; /* space for sticky navbar fragment */
+    }
+
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 1.25rem;
+      }
+    }
+
+    /* ============================
+       SHARED BUTTON STYLES
+    ============================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      border: none;
+      outline: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      background-color: var(--accent-orange);
+      color: var(--black);
+      transition: background-color 0.22s ease, color 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background-color: #d37f08;
+      color: var(--white);
+    }
+
+    .btn-outline-light {
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      color: var(--white);
+    }
+
+    .btn-outline-light:hover {
+      background-color: rgba(0, 0, 0, 0.16);
+      color: var(--white);
+    }
+
+    .btn-soft {
+      background-color: var(--white);
+      color: var(--deep-green);
+      border: 1px solid #e3dac9;
+    }
+
+    .btn-soft:hover {
+      background-color: var(--accent-orange);
+      color: var(--black);
+    }
+
+    .btn-sm {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.8rem;
+    }
+
+    /* ============================
+       SCROLL REVEAL
+    ============================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-left {
+      transform: translateX(-50px);
+    }
+    .reveal-right {
+      transform: translateX(50px);
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateX(0) translateY(0);
+    }
+
+    /* ============================
+       SECTION HEADERS
+    ============================= */
+    .section-header {
+      text-align: left;
+      margin-bottom: 2.3rem;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .section-header.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-header.center .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================
+       HERO SECTION
+       (Execoore-style layout)
+    ============================= */
+    .hero {
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+      background: linear-gradient(180deg, var(--white) 0%, #e5eef0 60%, var(--soft-cream) 100%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .hero-tagline {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #1aa9a1;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--accent-orange);
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 34rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-photo-panel {
+      width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+      background: #dde6ea;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-photo-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-floating-info {
+      position: absolute;
+      left: 8%;
+      bottom: 10%;
+      background: rgba(52, 79, 31, 0.96);
+      color: var(--soft-cream);
+      border-radius: 16px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.8rem;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4);
+      max-width: 73%;
+    }
+
+    .hero-floating-info strong {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-media {
+        order: -1;
+      }
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-floating-info {
+        left: 6%;
+        right: 6%;
+        bottom: 7%;
+        max-width: none;
+      }
+    }
+
+    /* ============================
+       FEATURE CARDS ROW (CSS kept, section removed)
+    ============================= */
+    .feature-row {
+      margin-top: -2.2rem;
+      padding-top: 0;
+      padding-bottom: 3.4rem;
+      background-color: var(--soft-cream);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .feature-card {
+      background-color: var(--white);
+      border-radius: 18px;
+      padding: 1.25rem 1.2rem;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e1dacb;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .feature-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .feature-text {
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .feature-link {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--deep-green);
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+      align-self: flex-start;
+    }
+
+    .feature-link:hover {
+      color: var(--accent-orange);
+    }
+
+    @media (max-width: 1024px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .feature-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SERVICES SECTION (3 cards)
+    ============================= */
+    .services {
+      background-color: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .service-card {
+      background-color: var(--soft-cream);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e1dacb;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-img {
+      height: 190px;
+      overflow: hidden;
+    }
+
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-body {
+      padding: 1.2rem 1.2rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .service-tag {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--deep-green);
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .service-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .service-meta {
+      font-size: 0.78rem;
+      color: var(--deep-green);
+      margin-bottom: 0.4rem;
+    }
+
+    @media (max-width: 992px) {
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       BRAND STRIP / IMAGE BAND
+    ============================= */
+    .brand-strip {
+      padding-top: 0;
+      background-color: var(--deep-green);
+    }
+
+    .brand-hero {
+      border-radius: 26px;
+      overflow: hidden;
+      position: relative;
+      min-height: 320px; /* more height */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+      background: url("https://images.pexels.com/photos/3846235/pexels-photo-3846235.jpeg?auto=compress&cs=tinysrgb&w=1200") center/cover no-repeat;
+    }
+
+    .brand-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--soft-cream);
+      padding: 0 1.5rem;
+    }
+
+    .brand-content h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    /* ============================
+       PROJECT APPLICATIONS (NEW)
+    ============================= */
+    .applications {
+      background-color: var(--soft-cream);
+    }
+
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .applications-card {
+      background-color: var(--white);
+      border-radius: 18px;
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e1dacb;
+      font-size: 0.86rem;
+    }
+
+    .applications-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .applications-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .applications-meta {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    @media (max-width: 992px) {
+      .applications-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .applications-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       BENEFITS SECTION
+    ============================= */
+    .benefits {
+      background-color: var(--white);
+    }
+
+    .benefit-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .benefit-row.reverse {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    }
+
+    .benefit-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.8rem;
+    }
+
+    .benefit-list li {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .benefit-list li::before {
+      content: "›";
+      color: var(--accent-orange);
+      margin-right: 0.35rem;
+    }
+
+    .benefit-image {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .benefit-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .benefit-row,
+      .benefit-row.reverse {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       SAFETY & SUPPORT (NEW)
+    ============================= */
+    .safety {
+      background-color: var(--soft-cream);
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .safety-card {
+      background-color: var(--white);
+      border-radius: 18px;
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e1dacb;
+      font-size: 0.86rem;
+    }
+
+    .safety-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .safety-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .safety-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .safety-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* ============================
+       INLINE FORM SECTION WRAPPER
+    ============================= */
+    .enquiry-wrapper {
+      background-color: var(--white);
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 100%;
+    }
+
+    .enquiry-wrapper-inner {
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 3.5rem 0 4rem;
+    }
+
+    /* ============================
+       MODAL POPUP FOR FORM
+    ============================= */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-inner {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 95vh;
+      overflow: auto;
+      border-radius: 22px;
+      background: transparent;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      z-index: 10;
+      border: none;
+      background: #111111;
+      color: var(--soft-cream);
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content-wrapper {
+      border-radius: 22px;
+      overflow: hidden;
+    }
+
+    /* placeholders for fragments */
+    #navbar-placeholder,
+    #footer-placeholder {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR FRAGMENT -->
+  <div id="navbar-placeholder"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero reveal reveal-left">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-tagline">
+            BOOM LIFTS • SCISSOR LIFTS • MAN LIFTS • CHERRY PICKERS
+          </div>
+          <h1 class="hero-title">
+            <span class="highlight">Safe access platforms</span> for every height and site.
+          </h1>
+          <p class="hero-text">
+            Hire boom lifts, scissor lifts, man lifts and cherry pickers with trained operators and
+            maintenance support for projects across India.
+          </p>
+
+          <div class="hero-cta-row">
+            <button class="btn js-open-form">
+              Click here to get a rental quote
+            </button>
+          </div>
+
+          <p class="hero-meta">
+            Perfect for construction, industrial shutdowns, warehouses, malls, airports and signage works.
+          </p>
+        </div>
+
+        <aside class="hero-media reveal reveal-right">
+          <div class="hero-photo-panel">
+            <img src="https://images.pexels.com/photos/3637722/pexels-photo-3637722.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Operator with boom lift">
+          </div>
+          <div class="hero-floating-info">
+            <strong>Boom, scissor, man lifts & cherry pickers.</strong>
+            Combine different platforms to match working height, outreach and site constraints while keeping crews safe.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION (3 cards with images) -->
+    <section class="services">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-tag">OUR SERVICES</p>
+          <h2 class="section-title">CORE HEIGHT-ACCESS RENTAL SERVICES</h2>
+          <p class="section-sub">
+            We support your work at height with the right mix of boom lifts, scissor lifts, man lifts and cherry pickers,
+            backed by operators and service teams.
+          </p>
+        </header>
+
+        <div class="services-grid">
+          <article class="service-card reveal reveal-left">
+            <div class="service-img">
+              <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                   alt="Boom lift at construction site">
+            </div>
+            <div class="service-body">
+              <p class="service-tag">Boom lift rentals</p>
+              <h3 class="service-title">Articulated & telescopic boom lifts</h3>
+              <p class="service-text">
+                Ideal for reaching over obstacles and working along façades, structures and utility corridors with
+                precise basket positioning.
+              </p>
+              <p class="service-meta">Typical heights: 40 ft – 135 ft • Diesel & electric options</p>
+              <button class="btn btn-sm btn-soft js-open-form">
+                Click here to book boom lifts
+              </button>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-img">
+              <img src="https://images.pexels.com/photos/162583/crane-sky-machines-construction-162583.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                   alt="Scissor lift indoors">
+            </div>
+            <div class="service-body">
+              <p class="service-tag">Scissor lift rentals</p>
+              <h3 class="service-title">Electric & rough terrain scissor lifts</h3>
+              <p class="service-text">
+                Choose stable platforms for indoor and outdoor works where straight vertical access and platform space
+                for people and tools are critical.
+              </p>
+              <p class="service-meta">Warehouse, malls, airports, factories</p>
+              <button class="btn btn-sm btn-soft js-open-form">
+                Click here to book scissor lifts
+              </button>
+            </div>
+          </article>
+
+          <article class="service-card reveal reveal-right">
+            <div class="service-img">
+              <img src="https://images.pexels.com/photos/585418/pexels-photo-585418.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                   alt="Cherry picker and man lift">
+            </div>
+            <div class="service-body">
+              <p class="service-tag">Man lifts & cherry pickers</p>
+              <h3 class="service-title">Compact vertical lifts</h3>
+              <p class="service-text">
+                Man lifts and cherry pickers for fast deployment, quick repairs, signage, lighting and outdoor utility
+                jobs that move between locations.
+              </p>
+              <p class="service-meta">Operator support & quick mobilisation</p>
+              <button class="btn btn-sm btn-soft js-open-form">
+                Click here to book man lifts
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- IMAGE / BRAND STRIP -->
+    <section class="brand-strip">
+      <div class="container">
+        <div class="brand-hero reveal">
+          <div class="brand-overlay"></div>
+          <div class="brand-content">
+            <h2>TRUSTED ACCESS PARTNERS FOR CONTRACTORS AND FACILITY TEAMS</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT APPLICATIONS (REPLACES TESTIMONIALS) -->
+    <section class="applications">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-tag">PROJECT APPLICATIONS</p>
+          <h2 class="section-title">Where our access platforms are used</h2>
+          <p class="section-sub">
+            Plan boom lifts, scissor lifts, man lifts and cherry pickers for the kind of work you’re executing on site.
+          </p>
+        </header>
+
+        <div class="applications-grid">
+          <article class="applications-card reveal reveal-left">
+            <h3>Façade & high-rise works</h3>
+            <p>
+              Elevate façade teams for glazing, painting and sign installation while keeping access away
+              from building edges and fragile areas.
+            </p>
+            <div class="applications-meta">High-rise towers • Commercial blocks</div>
+          </article>
+
+          <article class="applications-card reveal">
+            <h3>Warehousing & industrial plants</h3>
+            <p>
+              Use scissor lifts and compact man lifts for racking, MEP installation, conveyor maintenance
+              and shutdown activities inside busy facilities.
+            </p>
+            <div class="applications-meta">Racks • Utilities • Indoor fit-outs</div>
+          </article>
+
+          <article class="applications-card reveal reveal-right">
+            <h3>Roads, airports & infrastructure</h3>
+            <p>
+              Deploy truck-mounted cherry pickers for lighting, gantries, signage and telecom upkeep across long
+              corridors and multiple work zones.
+            </p>
+            <div class="applications-meta">Street lights • Gantries • Airports</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS / WHY CHOOSE US -->
+    <section class="benefits">
+      <div class="container">
+
+        <div class="benefit-row reveal reveal-left">
+          <div>
+            <p class="section-tag">Exclusive benefits</p>
+            <h2 class="section-title">Why contractors choose our lift rentals</h2>
+            <p class="section-sub">
+              We combine reliable equipment with planning support so that boom lifts, scissor lifts, man lifts and
+              cherry pickers arrive ready to work.
+            </p>
+            <ul class="benefit-list">
+              <li>Pre-rental support on height, outreach and floor conditions.</li>
+              <li>Operator and ground crew support where required.</li>
+              <li>Planned preventive maintenance and quick breakdown response.</li>
+              <li>Daily, weekly, monthly and long-term rental plans.</li>
+            </ul> <br>
+            <button class="btn btn-sm js-open-form">
+              Click here to plan your rental
+            </button>
+          </div>
+          <div class="benefit-image reveal reveal-right">
+            <img src="https://images.pexels.com/photos/162558/construction-crane-architecture-construction-machinery-162558.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Different access platforms">
+          </div>
+        </div>
+
+        <div class="benefit-row reverse reveal">
+          <div class="benefit-image">
+            <img src="https://images.pexels.com/photos/585419/pexels-photo-585419.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                 alt="Dashboard and planning">
+          </div>
+          <div>
+            <p class="section-tag">Project-focused</p>
+            <h2 class="section-title">Simple rental process that fits your schedule</h2>
+            <p class="section-sub">
+              From first enquiry to demobilisation, our process is built to keep your height-access tasks moving
+              smoothly.
+            </p>
+            <ul class="benefit-list">
+              <li>Click here and share your requirement using any enquiry button.</li>
+              <li>Get recommended lift combinations and transparent pricing.</li>
+              <li>Confirm schedule, access details and operator support.</li>
+              <li>Lifts are mobilised with safety checks completed before dispatch.</li>
+            </ul><br>
+            <button class="btn btn-sm js-open-form">
+              Click here to start your booking
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SAFETY & SUPPORT (REPLACES TEAM) -->
+    <section class="safety">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-tag">SAFETY & SUPPORT</p>
+          <h2 class="section-title">How we keep your teams safe at height</h2>
+          <p class="section-sub">
+            Every rental is backed by procedures, checklists and training that focus on safe access and reliable performance.
+          </p>
+        </header>
+
+        <div class="safety-grid">
+          <article class="safety-card reveal reveal-left">
+            <h3>Pre-dispatch inspections</h3>
+            <p>
+              Lifts are checked for critical safety systems, controls and emergency lowering before leaving the yard,
+              so platforms reach site ready to work.
+            </p>
+          </article>
+
+          <article class="safety-card reveal">
+            <h3>Operator orientation</h3>
+            <p>
+              Operators are briefed on your work zone, ground conditions and work-at-height risks, aligning
+              our crew with your site safety rules.
+            </p>
+          </article>
+
+          <article class="safety-card reveal reveal-right">
+            <h3>On-call service support</h3>
+            <p>
+              Field technicians and service vehicles support you with troubleshooting, breakdown response and
+              preventive maintenance during long-term rentals.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INLINE FORM SECTION (BOTTOM, LOADED AS FRAGMENT) -->
+    <section class="enquiry-wrapper">
+      <div class="enquiry-wrapper-inner reveal" id="form-inline-placeholder">
+        <!-- full form.html will be injected here as fragment -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER FRAGMENT -->
+  <div id="footer-placeholder"></div>
+
+  <!-- POPUP FORM MODAL (ALSO LOADS form.html AS FRAGMENT) -->
+  <div class="modal-overlay" id="formModal">
+    <div class="modal-inner">
+      <button class="modal-close" id="formModalClose" aria-label="Close form">&times;</button>
+      <div class="modal-content-wrapper" id="formModalContent">
+        <!-- form.html will be injected here when popup opens -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS: LOAD FRAGMENTS + POPUP + REVEAL -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Load navbar
+    fetch("navbar.html")
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        document.getElementById("navbar-placeholder").innerHTML = html;
+        initNavbar(); // run hamburger JS AFTER inject
+      })
+      .catch(function (err) {
+        console.error("Error loading navbar.html", err);
+      });
+
+    // Load footer
+    fetch("footer.html")
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        document.getElementById("footer-placeholder").innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error("Error loading footer.html", err);
+      });
+
+    // Load form at bottom (fragment style)
+    fetch("form.html")
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        document.getElementById("form-inline-placeholder").innerHTML = html;
+      })
+      .catch(function (err) {
+        console.error("Error loading form.html (inline)", err);
+      });
+
+    setupScrollReveal();
+    setupFormPopup();
+  });
+
+  // INIT NAVBAR (mobile menu)
+  function initNavbar() {
+    var header = document.getElementById("siteHeader");
+    var toggle = document.getElementById("navToggle");
+
+    if (!header || !toggle) return;
+
+    // open / close on hamburger click
+    toggle.addEventListener("click", function () {
+      header.classList.toggle("nav-open");
+    });
+
+    // close menu when a link is clicked (mobile UX)
+    var navLinks = header.querySelectorAll(".nav-links a");
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        header.classList.remove("nav-open");
+      });
+    });
+  }
+
+  // Popup form handling: load form.html as fragment on first open
+  function setupFormPopup() {
+    var modal = document.getElementById("formModal");
+    var modalClose = document.getElementById("formModalClose");
+    var modalContent = document.getElementById("formModalContent");
+    var formLoaded = false;
+
+    // open on any .js-open-form click
+    document.addEventListener("click", function (event) {
+      if (event.target.closest(".js-open-form")) {
+        event.preventDefault();
+        openModal();
+      }
+    });
+
+    function openModal() {
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+
+      if (!formLoaded) {
+        fetch("form.html")
+          .then(function (res) { return res.text(); })
+          .then(function (html) {
+            modalContent.innerHTML = html; // fragment style load
+            formLoaded = true;
+          })
+          .catch(function (err) {
+            console.error("Error loading form.html (modal)", err);
+            modalContent.innerHTML =
+              "<div style='background:#F9F5F0;padding:2rem;border-radius:1rem;color:#111;'>Unable to load enquiry form.</div>";
+          });
+      }
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  }
+
+  // Scroll reveal
+  function setupScrollReveal() {
+    var elements = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach(function (el) { el.classList.add("reveal-visible"); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elements.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
