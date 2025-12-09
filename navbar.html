@@ -40,6 +40,7 @@
       left: 0;
       right: 0;
       z-index: 1200;
+      padding: 10px 0px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
     }
 
@@ -278,6 +279,17 @@
         display: none;
       }
     }
+    .nav-logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  width: 180px;   /* adjust size as needed */
+  height: auto;
+  object-fit: cover;
+}
+
   </style>
 </head>
 <body>
@@ -286,12 +298,9 @@
     <div class="nav-container">
       <!-- LOGO PLACEHOLDER -->
       <a href="index.html" class="nav-logo">
-        <div class="nav-logo-placeholder">ML</div>
-        <div class="nav-logo-text">
-          <span>Manlift Hyderabad</span>
-          <span>Boom • Scissor • Man Lifts</span>
-        </div>
-      </a>
+  <img src="./images/H-LOGO.png" alt="Manlift Hyderabad Logo" class="nav-logo-img">
+</a>
+
 
       <!-- NAV LINKS + BUTTON -->
       <div class="nav-main">
@@ -302,7 +311,7 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li>
-            <a href="tel:+910000000000" class="nav-call-btn">
+            <a href="tel:+917200046768" class="nav-call-btn">
               Click to Call Us
             </a>
           </li>
